@@ -1,0 +1,26 @@
+#menu-topo{
+    background-color: #07889B;
+}
+#topo{
+    color: #FFFFFF;
+    text-decoration-color: none;
+}
+#botao{
+    background-color: #66B9BF;
+    border: 1px solid #66B9BF;
+    color: #FFFFFF;
+}
+#tema{
+    color: #FF914D;
+}
+#botao2{
+    background-color:#FF914D;
+    border: #FF914D;
+    width: 15%;
+}
+
+#rodape{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
