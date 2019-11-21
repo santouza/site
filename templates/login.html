@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title%}
+{% block nav %}
+{% endblock nav %}
+
+{% block content %}
+<div style="width:30%; margin:auto; margin-top: 10%; margin-bottom: 10%; border:1px groove; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+    <h4>Conecte-se</h4>
+<form  method="POST" action="">
+    {{form.hidden_tag ()}}
+        <div class="row">
+            <div class="input-field col s12">
+                {{form.username.label}}<br>
+                {{form.username}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{form.password.label}}<br>
+                {{form.password}}
+            </div>
+        </div>
+        {{form.submit(class="btn waves-effect waves-teal")}} 
+        <a class="waves-effect waves-light btn" href="/">Voltar</a>
+</form>
+</div>
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
