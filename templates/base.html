@@ -6,69 +6,71 @@
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>INÍCIO - CSD</title>
+        <title>{% block title %}{% endblock title%}</title>
     </head>
     <body>
-        {% block nav %}
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">LOGO</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="sass.html">HOME</a></li>
-                    <li><a href="/cadastrar">CADASTRAR</a></li>
-                    <li><a href="collapsible.html">Javascript</a></li>
-                    <li><a href="mobile.html">Mobile</a></li>
-                </ul>
-            </div>
-        </nav>
-        
-        <ul class="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
-        </ul>          
-        {% endblock nav %}
+    <!-- MENU -->
+    {% block nav %}
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo" style="margin-left: 3%; font-family: Verdana, Geneva, Tahoma, sans-serif;">PA</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Início</a></li>
+                <li><a href="/cadastrar">Cadastrar</a></li>
+                <li><a href="/">Como doar</a></li>
+                <li><a href="/doar">Doar</a></li>
+                <li><a href="/">Quem somos</a></li>             
+                <li><a href="/login"><button class="waves-effect waves-light btn-small">Login</button></a></li>
+            </ul>
+        </div>
+    </nav>
+    {% endblock nav %}
 
-        {% block content %}
-            <br><br><br>
-        {% endblock content %}
+    {% block content %}
 
-        {% block footer %}
-        <footer class="page-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
+    {% endblock content %}
+
+    <!-- RODAPÉ -->
+    {% block footer %}
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red" href="#top">
+          <i class="large material-icons">arrow_drop_up</i>
+        </a>
+      </div>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l4 offset-l2 s12">
+                    <ul>
+                        <li><i class="tiny material-icons">place</i> Guanambi, Bahia</li>
+                        <li><i class="tiny material-icons">phone</i> +1 555 123456</li>
+                        <li><i class="tiny material-icons">email</i> csd9102@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col l6 s12">
+                    <h5 class="white-text">O que é CSD?</h5>
+                    <p class="grey-text text-lighten-4">O CSD (Campanha Solidária do Desapego) é um site filantropico que tem o objetivo de receber doações de roupas, para entregá-las a pessoas carentes.</p>
                 </div>
             </div>
-                <div class="footer-copyright">
-                    <div class="container">
-                        ©2019 Copyright Text
-                        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                    </div>
-                </div>
-        </footer>
-        {% endblock footer %}
+        </div>
+        <div class="footer-copyright">
+            <div class="container text-lighten-4 center">
+                ©2019 Copyright
+            </div>
+        </div>
+    </footer>
+    {% endblock footer %}
 
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var elems = document.querySelectorAll('.sidenav');
-                    var instances = M.Sidenav.init(elems, options);
-                });
-            </script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, options);
+        });
+        $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton();
+        });
+      </script>
     </body>
 </html>
