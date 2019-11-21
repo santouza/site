@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Doações{% endblock title%}
+
+{% block content %}
+<div style="width:40%; margin:auto; margin-top: 2%; margin-bottom: 2%; border:1px groove; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
+        <h4>Doações</h4>
+    <form  method="POST" action="">
+        {{form.csrf_token}}
+            <div class="row">
+                <div class="input-field col s12">
+                    {{form.n_pecas.label}}<br>
+                    {{form.n_pecas}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{form.d_pecas.label}}<br><br>
+                    {{form.d_pecas}}
+                </div>
+            </div>
+            {{form.botao(class="btn waves-effect waves-teal")}}
+    </form> 
+</div>     
+{% endblock content %}
