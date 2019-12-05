@@ -5,10 +5,17 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class CadastroUsuario(FlaskForm):
     username = StringField('Usuário', validators = [DataRequired(), Length(min = 2, max = 80)])
+    name = StringField('Nome', validators = [DataRequired()])
     email = StringField('Email', validators = [DataRequired(), Email()])
-    password = PasswordField('Senha', validators = [DataRequired()])
-    conf_password = PasswordField('Confirme sua senha', validators = [DataRequired(), EqualTo('password')])
+    password = PasswordField('Senha', validators = [DataRequired(), EqualTo('conf_password')])
+    conf_password = PasswordField('Confirme sua senha', validators = [DataRequired()])
     submit = SubmitField('Cadastrar')
+
+class LoginUsuario(FlaskForm):
+    username = StringField('Usuário', validators = [DataRequired()])
+    password = PasswordField('Senha', validators = [DataRequired()])
+    remember_me = BooleanField('Remember me')
+    submit = SubmitField('Entrar')
 
 class Doacoes(FlaskForm):
     n_pecas = StringField('Nº de peças', validators = [DataRequired()])
