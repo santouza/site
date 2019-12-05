@@ -1,28 +1,43 @@
 {% extends 'base.html' %}
-{% block title %}Login{% endblock title%}
+{% block title %}Entrar{% endblock title %}
 {% block nav %}
 {% endblock nav %}
 
 {% block content %}
+
 <div style="width:30%; margin:auto; margin-top: 10%; margin-bottom: 10%; border:1px groove; padding-bottom: 10px; padding-left: 10px; padding-right: 10px;">
     <h4>Conecte-se</h4>
-<form  method="POST" action="">
-    {{form.hidden_tag ()}}
-        <div class="row">
-            <div class="input-field col s12">
-                {{form.username.label}}<br>
-                {{form.username}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                {{form.password.label}}<br>
-                {{form.password}}
-            </div>
-        </div>
-        {{form.submit(class="btn waves-effect waves-teal")}} 
-        <a class="waves-effect waves-light btn" href="/">Voltar</a>
-</form>
+    <form method="POST" action="">
+            {{form.hidden_tag()}}
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{form.username.label}}<br>
+                        {{form.username}}
+                        {% if form.errors.username %}
+                            <div class="card-panel teal lighten-5">
+                                <ul>
+                                {% for e in form.errors.username%}
+                                    <li>{{ e }}</li>
+                                {% endfor %}
+                            </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{form.password.label}}<br>   
+                        {{form.password}}                
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        {{form.remember_me}}<span>Lembrar</span>
+                    </label>   
+                </div><br>
+                {{form.submit(class="btn waves-effect waves-light")}}
+                <input type="button" class="btn waves-effect waves-teal" value="Voltar" onClick="history.go(-1)">
+    </form>
 </div>
 {% endblock content %}
 

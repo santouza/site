@@ -11,21 +11,39 @@
     <body>
     <!-- MENU -->
     {% block nav %}
-    <nav>
+    <nav style="background-color: #66B9BF;">
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo" style="margin-left: 3%; font-family: Verdana, Geneva, Tahoma, sans-serif;">PA</a>
+            <a href="/" class="">Campanha do Agasalho</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="/">Início</a></li>
                 <li><a href="/cadastrar">Cadastrar</a></li>
                 <li><a href="/">Como doar</a></li>
                 <li><a href="/doar">Doar</a></li>
-                <li><a href="/">Quem somos</a></li>             
-                <li><a href="/login"><button class="waves-effect waves-light btn-small">Login</button></a></li>
+                <li><a href="/quemsomos">Quem somos</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="/logout"><button class="waves-effect waves-light btn-small" style="background-color: #FF914D;">Sair</button></a></li>
+                {% else %}
+                    <li><a href="/login"><button class="waves-effect waves-light btn-small" style="background-color: #FF914D;">Login</button></a></li>
+                {% endif %}               
             </ul>
         </div>
     </nav>
     {% endblock nav %}
+
+    {% block message %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="card-panel teal lighten-5">
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% endblock message%}
 
     {% block content %}
 
@@ -33,16 +51,17 @@
 
     <!-- RODAPÉ -->
     {% block footer %}
+
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red" href="#top">
-          <i class="large material-icons">arrow_drop_up</i>
+        <a class="btn-floating btn-large red" href="#top" id="return">
+          <i class="large material-icons" style="background-color: #FF914D;">arrow_drop_up</i>
         </a>
-      </div>
-    <footer class="page-footer">
+    </div>
+    <footer class="page-footer" style="background-color: #07889B;">
         <div class="container">
             <div class="row">
                 <div class="col l4 offset-l2 s12">
-                    <ul>
+                    <ul> 
                         <li><i class="tiny material-icons">place</i> Guanambi, Bahia</li>
                         <li><i class="tiny material-icons">phone</i> +1 555 123456</li>
                         <li><i class="tiny material-icons">email</i> csd9102@gmail.com</li>
@@ -71,6 +90,26 @@
         $(document).ready(function(){
         $('.fixed-action-btn').floatingActionButton();
         });
-      </script>
+            $('.carousel').carousel({
+                interval: 2000
+            })
+        </script>
     </body>
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#return').fadeIn();
+        } else {
+            $('#return').fadeOut();
+        }
+    });
+
+    $('#return').click(function(){
+        $('html, body').animate({scrollTop : 0},800);
+        return false;
+    });
+});
+    </script>
 </html>

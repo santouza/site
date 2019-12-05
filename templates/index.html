@@ -1,1 +1,71 @@
 {% extends 'base.html' %}
+{% block title %}Início{% endblock title%}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <div>
+        <h5 style = "margin-inline-start: 2%;">Olá, {{ current_user.name }}</h5>
+    </div>
+{% else %}
+    <div style = "margin-inline-start: 2%;">
+        <h4>Bem-Vindo</h4>
+    </div>
+{% endif %}
+
+<img style = "width: 100%; margin: auto;" src="{{ url_for('static', filename='img/IMG.png') }}" alt="">
+
+<!-- CARDS -->
+<div class="row" style="margin-left: 5%;">
+    <div class="col s4">
+        <div class="row">
+            <div class="col s12 m10">
+                <div class="card">
+                    <div class="card-image">
+                        <br>
+                        <img style = "width: 50%; margin: auto;" src="{{ url_for('static', filename='img/IMG4.png') }}" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p align="justify">Se não usou determina roupa ultimamente, então está na hora de abrir espaço.
+                            Nesse momento, nada melhor que doar essas peças para pessoas necessitadas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s4">
+        <div class="row">
+            <div class="col s12 m10">
+                <div class="card">
+                    <div class="card-image">
+                        <br>
+                        <img style = "width: 50%; margin: auto;" src="{{ url_for('static', filename='img/IMG5.png') }}" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p align="justify">Tenha o mínimo de consideração por quem vai receber essas roupas, 
+                            por isso doe peças de roupas bem conservadas, e que ainda possa ser reutilizadas por outras pessoas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s4">
+        <div class="row">
+            <div class="col s12 m10">
+                <div class="card">
+                    <div class="card-image">
+                        <br>
+                        <img style = "width: 50%; margin: auto;" src="{{ url_for('static', filename='img/IMG6.png') }}" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p align="justify">Além de escolher peças em bom estado, é aconselhado também que elas estejam limpas. 
+                            É importante que haja um bom senso, afinal de contas, ninguém gosta de usar roupas sujas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
