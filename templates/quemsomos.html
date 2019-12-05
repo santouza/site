@@ -8,14 +8,13 @@
             <div class="card-panel grey lighten-5 z-depth-1">
                 <div class="row valign-wrapper">
                     <div class="col s4 m2">
-                        <img src="../static/img/IMG4.png" alt="" class="circle responsive-img">
+                        <img src="{{ url_for('static', filename='img/IMG2.jpg') }}" alt="" class="circle responsive-img">
                     </div>
                     <div class="col s8 m10" >
                         <p class="black-text">
-                            This is a square image. Add the "circle" class to it to make it appear circular.
-                            This is a square image. Add the "circle" class to it to make it appear circular.
-                            This is a square image. Add the "circle" class to it to make it appear circular.
-                            This is a square image. Add the "circle" class to it to make it appear circular.
+                            <b>Lívia Souza, 17 anos, Igaporã/BA <span style="color: blue;">(programadora)</span></b>
+                            <br>
+                            "Perdemos muitas noites de sono, entramos em depressão, levaram nossa sanidade mental, e agora o que nos resta é chorar e aguardar a nota!"
                         </p>
                     </div>
                 </div>
@@ -23,7 +22,26 @@
         </div>
     </div>
 </div>
-
+<div class="box">
+    <div class="row">
+        <div class="col s12 m8">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper">
+                    <div class="col s8 m10" >
+                        <p class="black-text">
+                            <b>Paula Vitória, 16 anos, Espinosa/MG <span style="color: blue;">(programadora)</span></b>
+                            <br>
+                            "Rt"
+                        </p>
+                    </div>
+                    <div class="col s4 m2">
+                        <img src="{{ url_for('static', filename='img/IMG3.jpg') }}" alt="" class="circle responsive-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <style>
     .box {
         margin-left: 25%;

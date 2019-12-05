@@ -13,15 +13,6 @@
                     <div class="input-field col s12">
                         {{form.username.label}}<br>
                         {{form.username}}
-                        {% if form.errors.username %}
-                            <div class="card-panel teal lighten-5">
-                                <ul>
-                                {% for e in form.errors.username%}
-                                    <li>{{ e }}</li>
-                                {% endfor %}
-                            </ul>
-                            </div>
-                        {% endif %}
                     </div>
                 </div>
                 <div class="row">
