@@ -1,14 +1,13 @@
 #coding: utf-8
 from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, SubmitField, BooleanField, TextAreaField)
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email
 
 class CadastroUsuario(FlaskForm):
     username = StringField('Usuário', validators = [DataRequired(), Length(min = 2, max = 80)])
     name = StringField('Nome', validators = [DataRequired()])
     email = StringField('Email', validators = [DataRequired(), Email()])
-    password = PasswordField('Senha', validators = [DataRequired(), EqualTo('conf_password')])
-    conf_password = PasswordField('Confirme sua senha', validators = [DataRequired()])
+    password = PasswordField('Senha', validators = [DataRequired()])
     submit = SubmitField('Cadastrar')
 
 class LoginUsuario(FlaskForm):
