@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, login_user, logout_user, UserMixin 
+from flask_login import LoginManager, login_user, logout_user, UserMixin, current_user 
 from forms import CadastroUsuario, LoginUsuario, Doacoes
-from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///CSD.db'
@@ -56,6 +55,7 @@ def load_user(id):
 
 @app.route('/')
 def index():
+    print(current_user)
     return render_template('index.html')
 
 @app.route('/cadastrar', methods = ['GET', 'POST'])
@@ -66,9 +66,8 @@ def cadastrar():
         name = form.name.data
         email = form.email.data
         password = form.password.data
-        conf_password = form.conf_password.data
-        user = User.query.filter_by(email=email).first()
-        if user or password != conf_password:
+        user = User.query.filter_by(username=username).first() or User.query.filter_by(email=email).first()
+        if user:
             flash("Insira dados válidos")
             return redirect(url_for('cadastrar'))
 
@@ -100,6 +99,8 @@ def doacoes():
         doar.d_pecas = request.form['d_pecas']
         db.session.add(doar)
         db.session.commit()
+        flash("Obrigado pela sua doação!")
+        return redirect(url_for("index"))
 
     return render_template('doacoes.html', form = form)
 
